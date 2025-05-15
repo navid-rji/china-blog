@@ -1,6 +1,7 @@
 import type { MDXComponents } from "mdx/types";
 import React, { ComponentPropsWithoutRef } from "react";
 import { Link } from "next-view-transitions";
+import Image from "next/image";
 
 /* eslint-disable @next/next/no-img-element */
 
@@ -131,11 +132,15 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         );
       }
       return (
-        <img
+        <Image
+          src={props.src as string}
+          alt={props.alt as string}
+          // {...props}
           className="shadow-sm dark:shadow-gray-800"
-          src={props.src}
-          alt={props.alt}
-          {...props}
+          width={0}
+          height={0}
+          sizes="100vw"
+          style={{ width: "100%", height: "auto" }}
         />
       );
     },

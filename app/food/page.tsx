@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import BackHomeButton from "@/components/back-home-button";
+import Image from "next/image";
 
 // Force static generation
 export const dynamic = "force-static";
@@ -40,11 +41,15 @@ export default async function FoodPage() {
               <h1 className="font-bold text-xl pt-12 mb-2">{formattedDate}</h1>
               <div className="flex flex-col space-y-4">
                 {files.map((file) => (
-                  <img
+                  <Image
                     key={file}
                     src={`/food/${file}`}
                     alt={`Essen vom ${formattedDate}`}
                     className="shadow-sm dark:shadow-gray-800"
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    style={{ width: "100%", height: "auto" }}
                   />
                 ))}
               </div>
